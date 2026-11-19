@@ -1,14 +1,93 @@
-# NEXUS Edge Console [pre-develpement]
+# NEXUS Edge Console
 
-**A Modular Desktop AI Gateway & Edge Control Platform**
+[你的名字 / GitHub ID]
 
-一个面向个人开发者、AI 工具用户和 DIY 爱好者的模块化桌面边缘控制平台。
-
-NEXUS Edge Console 将 Linux 计算主控、云端 AI API 网关、语音交互、设备控制和可插拔功能模块整合在一个紧凑的桌面设备中。
-
-它不是一台用于本地运行大型语言模型的计算服务器，而是一个以云端 AI 为主要推理能力、以本地 Linux 主控为服务中枢、以模块化硬件为扩展方式的个人 AI 控制终端。
+<img src="https://img.shields.io/badge/status-pre--development-orange" alt="pre-development" />
+<img src="https://img.shields.io/badge/build-DIY%20%2F%20Open%20Hardware-blue" alt="DIY / Open Hardware" />
+<img src="https://img.shields.io/badge/prototype%20budget-%C2%A5400--550-green" alt="prototype budget ¥400–550" />
+<img src="https://img.shields.io/badge/license-MIT%20%2F%20CERN--OHL-lightgrey" alt="MIT / CERN-OHL" />
 
 ---
+
+## 身份卡片
+
+- **姓名 / GitHub ID**：`[你的名字 / GitHub ID]`
+- **身份标签**：独立开发者、嵌入式爱好者、开源硬件实践者
+- **当前项目角色**：NEXUS Edge Console 发起人与维护者
+- **所在地 / 时区**：[城市 / UTC+8]
+- **联系方式**：GitHub Issues / Discussions / `[邮箱占位]`
+- **项目状态**：Hardware Research / Pre-development
+- **一句话自我介绍**：我是一名专注于模块化嵌入式硬件的独立开发者，正在公开构建 NEXUS Edge Console，一个支持热插拔、模块化扩展的边缘计算平台。我坚信开放的文档、决策记录与硬件设计是社区共进的关键。
+
+---
+
+## 我在公开构建什么
+
+NEXUS Edge Console 是一个模块化嵌入式边缘平台，通过 USB 背板连接多种功能模块（语音、传感器、I/O、红外、继电器、显示），旨在让“插即用”成为可能，无需修改主控软件。我之所以做这个项目，是为了验证模块化硬件的可复刻性，并建立一套从决策记录到装配测试的完整开放流程。当前阶段为预开发，接口可能在 Stage 0–1 期间调整，公开构建方式包括路线图、BOM、决策记录（ADR）与测试报告持续更新。
+
+---
+
+## 我的开放态度
+
+- **公开构建**：路线图、BOM、替代料、ADR（决策记录）与测试报告公开在 `docs/` 目录；`docs/BOM.md` 含 LCSC/立创货号、单价、≥2 个替代料；`docs/TEST_REPORT.md` 标记验收项状态。
+- **开放接口**：模块协议 `docs/MODULE_PROTOCOL.md` 公开讨论，含身份识别方案（方案 A：USB VID/PID + 字符串描述符、方案 B：Microsoft OS 2.0 Descriptors）、心跳 1000ms/3次掉线判 offline、电源与热插拔规则。
+- **开放贡献**：Issue 模板覆盖模块提案 `module-proposal.md`、复刻报告 `replication-report.md`、缺陷报告 `bug-report.md`；PR 流程见 `CONTRIBUTING.md`。欢迎贡献固件、装配反馈或文档补充。
+- **开放复刻**：硬件按 `hardware/*/kicad/` → `production/` → `mechanical/` 三级分离；装配文档参考 OHAI / DocuBricks 结构，每个 Brick 含组件清单、分步指令、测试/校准说明、BOM 引用。
+- **开放许可**：硬件采用 CERN-OHL-P-2.0（宽松）或 CERN-OHL-W-2.0（弱互惠），软件与固件采用 MIT License。最终以各子目录 `LICENSE` 文件为准。
+- **开放沟通**：以 GitHub Issues / Discussions 为主要渠道；说明响应预期（Issues 48 小时内首次回复，PR 1 周内审查），明确不承诺 SLA。
+- **接受修正**：ADR 记录选择理由；欢迎基于测试数据推翻旧决策，并在 `decisions/` 新增记录，原 ADR 保留并标记 `superseded`。
+- **公开边界**：当前为预开发阶段，成本 `¥400–550` 为目标值，未验证项在 `docs/TEST_REPORT.md` 标注；硬件与固件处于原型验证期，不保证量产可靠性。
+
+---
+
+## 如何参与
+
+| 参与者 | 可以做什么 | 入口 |
+|---|---|---|
+| **新手** | 复刻某个子模块、提交装配反馈、报告中文翻译错误 | `replication-report.md` / `docs/ASSEMBLY.md` |
+| **硬件** | 评审背板电源、提出替代料、完善 BOM 备选料表 | `docs/BOM.md` / `module-proposal.md` |
+| **固件** | 贡献模块 MCU 固件、ESP-SR 命令词扩展、改进心跳/降级逻辑 | `firmware/` / `docs/MODULE_PROTOCOL.md` |
+| **软件** | 改进 API Gateway、模块管理服务、新增 Cline Base URL 示例 | `software/` / `examples/cline-base-url.md` |
+| **文档** | 完善装配说明、添加测试用例、更新脚注引用、翻译文档 | `docs/ASSEMBLY.md` / `docs/BOM.md` / `docs/TEST_REPORT.md` |
+| **测试** | 提交长时间运行与故障注入结果、填写测试报告模板 | `docs/TEST_REPORT.md` |
+
+---
+
+## 透明边界与已知风险
+
+- **当前阶段**：Pre-development，接口可能调整。
+- **成本 `¥400–550`** 为目标值，实际随采购与打样波动。
+- **已知风险**：
+  1. USB HUB 兼容性：不同品牌（SL2.1A / CH334）的枚举行为差异，部分需手动安装 WinUSB 驱动。
+  2. 槽位限流与瞬态保护：TPS2553/SY6280 的热关断响应时间可能在突电情况下产生短暂电压波动。
+  3. ESP-SR 命令词数量限制：MultiNet 支持 ≤200 条自定义命令词，上限可能受语料库质量影响。
+  4. 结构公差：2020 铝型材与 3D 打印托盘的配合间隙受打印机精度与材料收缩率影响。
+  5. 替代料可得性：`docs/BOM.md` 中列出的 ≥2 个替代型号可能因供应链变动而实际不可得，以实测采购为准。
+- **未验证内容**：在 `docs/TEST_REPORT.md` 中标记状态，尚未通过首版 MVP 验收清单的项目不承诺可用性。
+
+---
+
+## 下一步
+
+1. 冻结主控与模块接口选型，更新 `decisions/`（目标日期：[2025-12]）
+2. 完成 API Gateway 与 Cline 接入示例，更新 `examples/cline-base-url.md`（目标日期：[2025-12]）
+3. 完成首版模块协议草案与心跳/降级测试，更新 `docs/MODULE_PROTOCOL.md`（目标日期：[2025-12]}
+
+---
+
+## 参考文献
+
+- `.readme/REFERENCES.md` — 完整参考文献列表，含 URL 与访问日期
+- `decisions/0001-module-identification.md` — 为什么默认选方案 A
+- `decisions/0003-power-switch-selection.md` — 限流器件选型记录
+- `docs/MODULE_PROTOCOL.md` — 模块协议规范，含方案 A/B 对比
+- `docs/ASSEMBLY.md` — 模块装配与测试步骤
+- `examples/module-capability.schema.json` — 能力描述 JSON Schema
+- OHAI (Open Hardware Assembly Instructions) — Open Hardware Assembly Instructions (Opulo)
+- DocuBricks — Modular XML-based documentation standard for Open Source Hardware (IEEE Open)
+- CERN Open Hardware Licence v2 — CERN-OHL-P / CERN-OHL-W / CERN-OHL-S
+
+脚注示例：[1] OHAI — Open Hardware Assembly Instructions (Opulo, mkDocs-based) 参见 `docs/ASSEMBLY.md` 文档结构。
 
 ## 1. 项目介绍
 
