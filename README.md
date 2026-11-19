@@ -1,7 +1,5 @@
 # NEXUS Edge Console
 
-[你的名字 / GitHub ID]
-
 <img src="https://img.shields.io/badge/status-pre--development-orange" alt="pre-development" />
 <img src="https://img.shields.io/badge/build-DIY%20%2F%20Open%20Hardware-blue" alt="DIY / Open Hardware" />
 <img src="https://img.shields.io/badge/prototype%20budget-%C2%A5400--550-green" alt="prototype budget ¥400–550" />
@@ -11,17 +9,17 @@
 
 ## 身份卡片
 
-- **姓名 / GitHub ID**：`[你的名字 / GitHub ID]`
-- **身份标签**：独立开发者、嵌入式爱好者、开源硬件实践者
+- **姓名 / GitHub ID**：`RainCatStar-lit`
+- **身份标签**：独立开发者、嵌入式爱好者、开源硬件研究
 - **当前项目角色**：NEXUS Edge Console 发起人与维护者
-- **所在地 / 时区**：[城市 / UTC+8]
-- **联系方式**：GitHub Issues / Discussions / `[邮箱占位]`
+- **所在地 / 时区**：[UTC+8]
+- **联系方式**：GitHub Issues / Discussions /
 - **项目状态**：Hardware Research / Pre-development
-- **一句话自我介绍**：我是一名专注于模块化嵌入式硬件的独立开发者，正在公开构建 NEXUS Edge Console，一个支持热插拔、模块化扩展的边缘计算平台。我坚信开放的文档、决策记录与硬件设计是社区共进的关键。
+- **一句话自我介绍**：我是一名专注于模块化嵌入式硬件的独立开发者，正在公开构建 NEXUS Edge Console，一个支持热插拔、模块化扩展的边缘计算平台。我认为开放的文档、决策记录与硬件设计是社区共进的关键。
 
 ---
 
-## 我在公开构建什么
+## 我在构建什么
 
 NEXUS Edge Console 是一个模块化嵌入式边缘平台，通过 USB 背板连接多种功能模块（语音、传感器、I/O、红外、继电器、显示），旨在让“插即用”成为可能，无需修改主控软件。我之所以做这个项目，是为了验证模块化硬件的可复刻性，并建立一套从决策记录到装配测试的完整开放流程。当前阶段为预开发，接口可能在 Stage 0–1 期间调整，公开构建方式包括路线图、BOM、决策记录（ADR）与测试报告持续更新。
 
@@ -44,7 +42,7 @@ NEXUS Edge Console 是一个模块化嵌入式边缘平台，通过 USB 背板�
 
 | 参与者 | 可以做什么 | 入口 |
 |---|---|---|
-| **新手** | 复刻某个子模块、提交装配反馈、报告中文翻译错误 | `replication-report.md` / `docs/ASSEMBLY.md` |
+| **新手** | 复刻某个子模块、提交装配反馈、报告翻译错误 | `replication-report.md` / `docs/ASSEMBLY.md` |
 | **硬件** | 评审背板电源、提出替代料、完善 BOM 备选料表 | `docs/BOM.md` / `module-proposal.md` |
 | **固件** | 贡献模块 MCU 固件、ESP-SR 命令词扩展、改进心跳/降级逻辑 | `firmware/` / `docs/MODULE_PROTOCOL.md` |
 | **软件** | 改进 API Gateway、模块管理服务、新增 Cline Base URL 示例 | `software/` / `examples/cline-base-url.md` |
