@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NEXUS Module Capability Descriptor",
+  "type": "object",
+  "required": [
+    "module_id",
+    "module_type",
+    "hardware_version",
+    "firmware_version",
+    "status",
+    "heartbeat_ms",
+    "capabilities",
+    "power"
+  ],
+  "properties": {
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z]+_[0-9]{3}$",
+      "description": "全局唯一标识符，格式：<type>_<序号>"
+    },
+    "module_type": {
+      "type": "string",
+      "enum": [
+        "voice",
+        "sensor",
+        "io",
+        "ir",
+        "relay",
+        "display"
+      ],
+      "description": "模块类型，对应 PID 分配表"
+    },
+    "hardware_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "硬件版本，主版本.次版本"
+    },
+    "firmware_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?$",
+      "description": "固件语义化版本，可含预发布标识"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline",
+        "degraded",
+        "booting"
+      ],
+      "description": "当前运行状态"
+    },
+    "heartbeat_ms": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 10000,
+      "default": 1000,
+      "description": "心跳上报周期（毫秒）"
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "wake_word",
+          "speech_command",
+          "sensor_temperature",
+          "sensor_humidity",
+          "sensor_pressure",
+          "gpio_input",
+          "gpio_output",
+          "uart_bridge",
+          "i2c_bridge",
+          "ir_learn",
+          "ir_transmit",
+          "relay_control",
+          "display_render"
+        ]
+      },
+      "description": "标准能力标识符列表"
+    },
+    "capability_details": {
+      "type": "object",
+      "description": "能力细节，供上层调度参考，键为 capabilities 中的标识符",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "power": {
+      "type": "object",
+      "required": [
+        "voltage_mv",
+        "max_current_ma",
+        "inrush_current_ma"
+      ],
+      "properties": {
+        "voltage_mv": {
+          "type": "integer",
+          "minimum": 3000,
+          "maximum": 12000,
+          "description": "工作电压（毫伏）"
+        },
+        "max_current_ma": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 3000,
+          "description": "最大持续电流（毫安）"
+        },
+        "inrush_current_ma": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 5000,
+          "description": "浪涌电流峰值（毫安）"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
